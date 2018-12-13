@@ -1,13 +1,22 @@
-var http = require('http');
+const Koa = require('koa');
+const path = require('path');
+const static = require('koa-static');
+const Router = require('koa-router');
 
-var server = http.createServer(function(request, response) {
+const apiRouter = require('./server/router');
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
+const app = new Koa();
 
+const staticPath = './dist';
+app.use(static(
+  path.join(__dirname, staticPath)
+));
+
+const router = new Router();
+router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());
+app.use(router.routes(), router.allowedMethods());
+
+const port = process.env.PORT || 1337;
+app.listen(port, () => {
+  console.log("Server running at http://localhost:%d", port);
 });
-
-var port = process.env.PORT || 1337;
-server.listen(port);
-
-console.log("Server running at http://localhost:%d", port);

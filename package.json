@@ -1,17 +1,46 @@
 {
-    "name": "app-service-hello-world",
-    "description": "Simple Hello World Node.js sample for Azure App Service",
+    "name": "linkerstart",
+    "description": "linkerstart",
     "version": "0.0.1",
     "private": true,
     "license": "MIT",
-    "author": "Microsoft",
+    "author": "jc",
     "scripts": {
-        "start": "node index.js"
+        "start": "webpack-dev-server --config ./webpack.dev.js --open --hot",
+        "build": "webpack --config ./webpack.prod.js",
+        "start-server": "node index.js"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.5",
+        "@babel/preset-env": "^7.1.5",
+        "@babel/preset-react": "^7.0.0",
+        "autoprefixer": "^9.3.1",
+        "babel-loader": "^8.0.4",
+        "clean-webpack-plugin": "^0.1.19",
+        "css-loader": "^1.0.1",
+        "file-loader": "^2.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.4.4",
+        "node-sass": "^4.10.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "postcss-loader": "^3.0.0",
+        "react-hot-loader": "^4.3.12",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
+        "uglifyjs-webpack-plugin": "^2.0.1",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.25.1",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.10",
+        "webpack-merge": "^4.1.4"
     },
     "dependencies": {
         "koa": "^2.6.2",
         "koa-router": "^7.4.0",
-        "koa-static": "^5.0.0"
-    },
-    "engines":{"node": "8.9.4"}
+        "koa-static": "^5.0.0",
+        "normalize.css": "^8.0.0",
+        "react": "^16.6.1",
+        "react-dom": "^16.6.1"
+    }
+    
 }
